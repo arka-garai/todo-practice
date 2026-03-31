@@ -43,33 +43,48 @@ userRouter.post("/signup", async (req, res) => {
 userRouter.post("/signin", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
-
-    const user = await UserModel.findOne({
-        email
-    })
-    if (!user) {
-        return res.json({
-            message: "invalid credentials"
+    try {
+        const user = await UserModel.findOne({
+            email
         })
-    }
+        if (!user) {
+            return res.status(403).json({
+                message: "invalid credentials"
+            })
+        }
 
-    const parsedData = await bcrypt.compare(password, user.password);
+        const passwordMatched = await bcrypt.compare(password, user.password);
 
-    //jwt
-    const token = jwt.sign({
-        id: user._id
-    }, process.env.JWT_USER_PASSWORD);
+        //jwt
+        if (passwordMatched) {
+            const token = jwt.sign({
+                id: user._id
+            }, process.env.JWT_USER_PASSWORD);
 
-    if (token) {
-        return res.json({
-            token,
-            message: "signin successfull"
+            if (token) {
+                return res.json({
+                    token,
+                    message: "signin successfull"
+                })
+            }
+        } else {
+            return res.json({
+                message: "invalid credentials"
+            })
+        }
+    } catch (err) {
+        res.status(500).json({
+            message: "internal server error"
         })
-    }
+        return
 
+    }
 })
 
+
+
 userRouter.post("/todo", (req, res) => {
+
 
 })
 

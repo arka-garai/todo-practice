@@ -4,12 +4,15 @@ const { userRouter } = require("./routes/user.js")
 const dotenv = require("dotenv");
 dotenv.config();
 const app = express();
+
 app.use(express.json());
 
 app.use("/api/v1/", userRouter);
 
-
-app.listen(3345, async function () {
+async function main() {
     await mongoose.connect(process.env.MONGODB_URI);
-    console.log("server is running")
-})
+    app.listen(3345, async function () {
+        console.log("server is running")
+    })
+}
+main();
