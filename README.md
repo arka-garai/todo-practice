@@ -10,9 +10,9 @@ A task management application built with modern web technologies.
 
 ## Screenshots
 
-![Screenshot 1](assets/screenshot-2026-04-03_23-11-25.png)
+![API Workflow](assets/api-workflow.png)
 
-![Screenshot 2](assets/screenshot-2026-04-03_23-12-33.png)
+![System Design](assets/system-design.png)
 
 ## Getting Started
 
