@@ -39,10 +39,10 @@ todo-app/
 |--------|----------|-------------|---------------|
 | POST | `/signup` | Register a new user | No |
 | POST | `/signin` | Login user | No |
-| GET | `/todos` | Get all todo items | Yes |
-| POST | `/todos` | Create a new todo item | Yes |
-| PUT | `/todos/:id` | Update an existing todo item | Yes |
-| DELETE | `/todos/:id` | Delete a todo item | Yes |
+| GET | `/todos` | Get all todo | Yes |
+| POST | `/todo` | Create a new todo | Yes |
+| PUT | `/todo/:id` | Update an existing todo | Yes |
+| DELETE | `/todo/:id` | Delete a todo | Yes |
 
 ## Getting Started
 
